@@ -1,0 +1,46 @@
+﻿@model Status
+@{
+    ViewData["Title"] = "StatusDelete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+
+        <div class="portlet box red">
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr style="background-color:gray;color:white">
+                                <th>Status ID</th>
+                                <th>Status Name</th>
+                                <th>Is Active</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Html.DisplayFor(model => model.StatusID)</td>
+                                <td>@Html.DisplayFor(model => model.StatusName)</td>
+                                <td>@Html.DisplayFor(model => model.IsActive)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form asp-action="StatusDelete" method="post">
+                        <input type="hidden" asp-for="StatusID" />
+                        <input type="submit" value="DELETE" class="btn btn-danger" onclick="return confirm('Are you sure ?')" action="StatusIndex" />
+                        <a asp-action="StatusIndex" class="btn btn-success">Back to the Brand List</a>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

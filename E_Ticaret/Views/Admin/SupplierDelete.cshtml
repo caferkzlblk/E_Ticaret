@@ -1,0 +1,49 @@
+﻿@model Supplier
+
+@{
+    ViewData["Title"] = "SupplierDelete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		
+
+		<div class="portlet box red">
+			<div class="portlet-body">
+				<div class="table-scrollable">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr style="background-color:gray;color:white">
+                                <th>Supplier ID</th>
+                                <th>Brand Name</th>
+                                <th>PhotoPath</th>
+                                <th>Is Active</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Html.DisplayFor(model => model.SupplierID)</td>
+                                <td>@Html.DisplayFor(model => model.BrandName)</td>
+                                <td><img src="~/resimler/@Model.PhotoPath" height="35" width="60" /></td>
+                                <td>@Html.DisplayFor(model => model.IsActive)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+					<form asp-action="SupplierDelete" method="post">
+						<input type="hidden" asp-for="SupplierID" />
+						<input type="submit" value="DELETE" class="btn btn-danger" onclick="return confirm('Are you sure ?')" action="SupplierIndex"  />
+						<a asp-action="SupplierIndex" class="btn btn-success">Back to the Brand List</a>
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+

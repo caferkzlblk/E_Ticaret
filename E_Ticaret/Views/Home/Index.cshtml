@@ -1,0 +1,631 @@
+﻿@model MainPageModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+}
+
+
+<div class="home-1-slider-area">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-sm-12 col-md-6 col-lg-9 ">
+				<div class="h1-slider">
+					<!-- HOME SLIDER -->
+					<div class="slider-wrap">
+						<div class="fullwidthbanner-container">
+							<div class="home-1">
+								<ul>
+									@foreach (var item in Model.SliderProducts)
+									{
+										<li data-transition="random" data-slotamount="7" data-masterspeed="1000">
+											<img src="~/resimler/@item.PhotoPath" alt="slide">
+											<div class="tp-caption large_black sfr carousel-caption-inner" data-x="65" data-y="20" data-speed="1100" data-start="1100" data-easing="easeInOutBack"
+												 style="color:#fff; font-size:25px; letter-spacing: 1px; text-transform: uppercase;">
+													<span style="background-color:red"> @item.UnitPrice TL </span>	
+											</div>
+											<div class="tp-caption large_black sfr carousel-caption-inner" data-x="65" data-y="71" data-speed="1100" data-start="1400" data-easing="easeInOutBack"
+												 style="  font-size: 30px; font-style:italic; font-weight: normal; color: #fff;font-weight: bold;">
+												<span style="background-color:red"> @item.ProductName TL </span>
+											</div>
+											<div class="tp-caption lfb carousel-caption-inner" data-x="130" data-y="160" data-speed="1300" data-start="1700" data-easing="easeInOutBack"
+												 style="">
+												<a href="/Home/CartProccess/@item.ProductID" class="s-btn" style="background: transparent; color: #fff; border: 1px solid #fff; font-weight:700; font-size: 12px; display: inline-block; padding:10px 18px; text-transform: uppercase;"><span style="background-color:red"> Add to Cart </span>	</a>
+											</div>
+										</li>
+									}
+
+									
+
+
+
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- END HOME SLIDER -->
+				</div>
+			</div>
+
+
+			@*Pod*@
+			<div class="col-sm-3 col-md-3 col-lg-3">
+				<div class="single-special-products" style="min-height: 369px;">
+					<h3 class="sp-module-title"><span>Product of the Day</span></h3>
+					<div class="all-sp-slides">
+						<!-- SP-SINGLE Product -->
+						<div class="sp-single">
+							<div class="sp-img-area">
+								<img class="first-img" src="~/resimler/@Model.ProductOfDay.PhotoPath" style="height: 200px;">
+								<div class="quick-view-detail">
+									<a href="/Home/Details/@Model.ProductOfDay.ProductID">View Detail</a>
+								</div>
+								<div class="sp-label-pro sp-label-pro-hot">Hot!</div>
+							</div>
+							<div class="sp-info-area">
+								<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@Model.ProductOfDay.ProductName</a></h2>
+								<div class="product-rating">
+									<div class="ratingbox" title="" Rating="3/5">
+										<div style="width: 65px" class="stars-orange"></div>
+									</div>
+								</div>
+								<p class="all-prices">
+									<span class="sp-price main-price">@Model.ProductOfDay.UnitPrice TL</span>
+								</p>
+
+							</div>
+							<div class="sp-button">
+								<div class="s-button">
+									<a href="/Home/CartProccess/@Model.ProductOfDay.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+								</div>
+								<div class="s-button">
+									<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+								</div>
+								<div class="s-button last-b">
+									<a href="/Home/Details/@Model.ProductOfDay.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+<!-- new product area start -->
+<div class="new-products-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 ">
+				<div class="n-full-products">
+					<div class="all-p-title">
+						<h3 style="background-color:#f32f6b color:white">New Products</h3>
+					</div>
+					<div class="row">
+						<div class="all-new-p">
+							<div class="all-new-single singal-p hom-1">
+								<!-- SP-SINGLE Ürün -->
+								@foreach (var item in Model.NewProducts)
+								{
+									<div class="col-sm-12 col-md-12 col-lg-12">
+										<div class="sp-single">
+											<div class="sp-img-area">
+												<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<div class="quick-view-detail">
+											<a href="/Home/Details/@item.ProductID">View Details</a>
+												</div>
+												<div class="sp-label-pro sp-label-pro-hot">New!</div>
+											</div>
+											<div class="sp-info-area">
+												<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+												<div class="product-rating">
+													<div style="width:50px" class="stars-orange"></div>
+												</div>
+												<p class="all-prices">
+													<span class="sp-price main-price">@item.UnitPrice TL</span>
+												</p>
+												<div class="sp-button">
+													<div class="s-button">
+														<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+													</div>
+													<div class="s-button">
+														<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+													</div>
+													<div class="s-button last-b">
+														<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+													</div>
+												</div>
+											</div>
+										
+											
+										</div>
+									</div>
+								}
+							</div>
+
+
+
+							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+<!-- special product area start -->
+<div class="speacial-products-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 ">
+				<div class="n-full-products">
+					<div class="all-p-title">
+						<h3 style="background-color:#f32f6b color:white">Special Products</h3>
+					</div>
+					<div class="row">
+						<div class="all-new-p">
+							<div class="all-new-single singal-p hom-1">
+								<!-- SP-SINGLE Ürün -->
+								@foreach (var item in Model.SpecialProducts)
+								{
+									<div class="col-sm-12 col-md-12 col-lg-12">
+										<div class="sp-single">
+											<div class="sp-img-area">
+												<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<div class="quick-view-detail">
+													<a href="/Home/Details/@item.ProductID">View Details</a>
+												</div>
+												<div class="sp-label-pro sp-label-pro-hot">New!</div>
+											</div>
+											<div class="sp-info-area">
+												<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+												<div class="product-rating">
+													<div style="width:50px" class="stars-orange"></div>
+												</div>
+												<p class="all-prices">
+													<span class="sp-price main-price">@item.UnitPrice TL</span>
+												</p>
+												<div class="sp-button">
+													<div class="s-button">
+														<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+													</div>
+													<div class="s-button">
+														<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+													</div>
+													<div class="s-button last-b">
+														<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								}
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+
+
+
+
+
+<!-- star product area start -->
+<div class="star-products-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 ">
+						<div class="n-full-products">
+							<div class="all-p-title">
+								<h3 style="background-color:#f32f6b color:white">Stared Products</h3>
+							</div>
+							<div class="row">
+								<div class="all-new-p">
+									<div class="all-new-single singal-p hom-1">
+										<!-- SP-SINGLE Ürün -->
+										@foreach (var item in Model.StarProducts)
+										{
+											<div class="col-sm-12 col-md-12 col-lg-12">
+												<div class="sp-single">
+													<div class="sp-img-area">
+														<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+														<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+														<div class="quick-view-detail">
+															<a href="/Home/Details/@item.ProductID">View Details</a>
+														</div>
+														<div class="sp-label-pro sp-label-pro-hot">New!</div>
+													</div>
+													<div class="sp-info-area">
+														<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+														<div class="product-rating">
+															<div style="width:50px" class="stars-orange"></div>
+														</div>
+														<p class="all-prices">
+															<span class="sp-price main-price">@item.UnitPrice TL</span>
+														</p>
+														<div class="sp-button">
+															<div class="s-button">
+																<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+															</div>
+															<div class="s-button">
+																<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+															</div>
+															<div class="s-button last-b">
+																<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										}
+									</div>
+
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</div>
+
+
+
+
+<!-- Oppurtunity product area start -->
+<div class="Oppurtunity-products-area">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 ">
+									<div class="n-full-products">
+										<div class="all-p-title">
+											<h3 style="background-color:#f32f6b color:white">Oppurtunity Products</h3>
+										</div>
+										<div class="row">
+											<div class="all-new-p">
+												<div class="all-new-single singal-p hom-1">
+													<!-- SP-SINGLE Ürün -->
+													@foreach (var item in Model.OppurtunityProducts)
+													{
+														<div class="col-sm-12 col-md-12 col-lg-12">
+															<div class="sp-single">
+																<div class="sp-img-area">
+																	<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+																	<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+																	<div class="quick-view-detail">
+																		<a href="/Home/Details/@item.ProductID">View Details</a>
+																	</div>
+																	<div class="sp-label-pro sp-label-pro-hot">New!</div>
+																</div>
+																<div class="sp-info-area">
+																	<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+																	<div class="product-rating">
+																		<div style="width:50px" class="stars-orange"></div>
+																	</div>
+																	<p class="all-prices">
+																		<span class="sp-price main-price">@item.UnitPrice TL</span>
+																	</p>
+																	<div class="sp-button">
+																		<div class="s-button">
+																			<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+																		</div>
+																		<div class="s-button">
+																			<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+																		</div>
+																		<div class="s-button last-b">
+																			<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+																		</div>
+																	</div>
+																</div>
+
+
+															</div>
+														</div>
+													}
+												</div>
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+		</div>
+
+
+
+
+<!-- Remarkable  product area start -->
+<div class="Remarkable-products-area">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 ">
+										<div class="n-full-products">
+											<div class="all-p-title">
+												<h3 style="background-color:#f32f6b color:white">Remarkable  Products</h3>
+											</div>
+											<div class="row">
+												<div class="all-new-p">
+													<div class="all-new-single singal-p hom-1">
+														<!-- SP-SINGLE Ürün -->
+														@foreach (var item in Model.RemarkableProducts)
+														{
+															<div class="col-sm-12 col-md-12 col-lg-12">
+																<div class="sp-single">
+																	<div class="sp-img-area">
+																		<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+																		<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+																		<div class="quick-view-detail">
+																			<a href="/Home/Details/@item.ProductID">View Details</a>
+																		</div>
+																		<div class="sp-label-pro sp-label-pro-hot">New!</div>
+																	</div>
+																	<div class="sp-info-area">
+																		<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+																		<div class="product-rating">
+																			<div style="width:50px" class="stars-orange"></div>
+																		</div>
+																		<p class="all-prices">
+																			<span class="sp-price main-price">@item.UnitPrice TL</span>
+																		</p>
+																		<div class="sp-button">
+																			<div class="s-button">
+																				<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+																			</div>
+																			<div class="s-button">
+																				<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+																			</div>
+																			<div class="s-button last-b">
+																				<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+																			</div>
+																		</div>
+																	</div>
+
+
+																</div>
+															</div>
+														}
+													</div>
+
+
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+		</div>  
+
+
+
+<!-- Discount  product area start -->
+<div class="Discount-products-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 ">
+				<div class="n-full-products">
+					<div class="all-p-title">
+						<h3 style="background-color:#f32f6b color:white">Discount Products</h3>
+					</div>
+					<div class="row">
+						<div class="all-new-p">
+							<div class="all-new-single singal-p hom-1">
+								<!-- SP-SINGLE Ürün -->
+								@foreach (var item in Model.DiscountProducts)
+								{
+									<div class="col-sm-12 col-md-12 col-lg-12">
+										<div class="sp-single">
+											<div class="sp-img-area">
+												<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<div class="quick-view-detail">
+													<a href="/Home/Details/@item.ProductID">View Details</a>
+												</div>
+												<div class="sp-label-pro sp-label-pro-hot">New!</div>
+											</div>
+											<div class="sp-info-area">
+												<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+												<div class="product-rating">
+													<div style="width:50px" class="stars-orange"></div>
+												</div>
+												<p class="all-prices">
+													<span class="sp-price main-price">@item.UnitPrice TL</span>
+												</p>
+												<div class="sp-button">
+													<div class="s-button">
+														<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+													</div>
+													<div class="s-button">
+														<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+													</div>
+													<div class="s-button last-b">
+														<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								}
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Highlighted  product area start -->
+<div class="Highlighted-products-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 ">
+				<div class="n-full-products">
+					<div class="all-p-title">
+						<h3 style="background-color:#f32f6b color:white">Highlighted Products</h3>
+					</div>
+					<div class="row">
+						<div class="all-new-p">
+							<div class="all-new-single singal-p hom-1">
+								<!-- SP-SINGLE Ürün -->
+								@foreach (var item in Model.HighlightedProducts)
+								{
+									<div class="col-sm-12 col-md-12 col-lg-12">
+										<div class="sp-single">
+											<div class="sp-img-area">
+												<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<div class="quick-view-detail">
+													<a href="/Home/Details/@item.ProductID">View Details</a>
+												</div>
+												<div class="sp-label-pro sp-label-pro-hot">New!</div>
+											</div>
+											<div class="sp-info-area">
+												<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+												<div class="product-rating">
+													<div style="width:50px" class="stars-orange"></div>
+												</div>
+												<p class="all-prices">
+													<span class="sp-price main-price">@item.UnitPrice TL</span>
+												</p>
+												<div class="sp-button">
+													<div class="s-button">
+														<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+													</div>
+													<div class="s-button">
+														<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+													</div>
+													<div class="s-button last-b">
+														<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								}
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- TopSeller Products area start -->
+<div class="TopSeller-products-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 ">
+				<div class="n-full-products">
+					<div class="all-p-title">
+						<h3 style="background-color:#f32f6b color:white">TopSeller Products</h3>
+					</div>
+					<div class="row">
+						<div class="all-new-p">
+							<div class="all-new-single singal-p hom-1">
+								<!-- SP-SINGLE Ürün -->
+								@foreach (var item in Model.TopSellerProducts)
+								{
+									<div class="col-sm-12 col-md-12 col-lg-12">
+										<div class="sp-single">
+											<div class="sp-img-area">
+												<img class="first-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<img class="hover-img" src="~/resimler/@item.PhotoPath" alt="" style="height:200px" />
+												<div class="quick-view-detail">
+													<a href="/Home/Details/@item.ProductID">View Details</a>
+												</div>
+												<div class="sp-label-pro sp-label-pro-hot">New!</div>
+											</div>
+											<div class="sp-info-area">
+												<h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">@item.ProductName</a></h2>
+												<div class="product-rating">
+													<div style="width:50px" class="stars-orange"></div>
+												</div>
+												<p class="all-prices">
+													<span class="sp-price main-price">@item.UnitPrice TL</span>
+												</p>
+												<div class="sp-button">
+													<div class="s-button">
+														<a href="/Home/CartProccess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+													</div>
+													<div class="s-button">
+														<a href="" data-toggle="tooltip" data-placement="top" class="black-tooltip add-to-cart all_src_icon">  </a>
+													</div>
+													<div class="s-button last-b">
+														<a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="view Details" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								}
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

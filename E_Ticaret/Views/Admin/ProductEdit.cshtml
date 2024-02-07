@@ -1,0 +1,164 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "ProductEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+
+		<div class="portlet box purple ">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-gift"></i> Product Update Form
+				</div>
+				<div class="tools">
+					<a href="" class="collapse">
+					</a>
+					<a href="#portlet-config" data-toggle="modal" class="config">
+					</a>
+					<a href="" class="reload">
+					</a>
+					<a href="" class="remove">
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<form class="form-horizontal" role="form" action="/Admin/ProductEdit" method="post">
+
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-body">
+
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="ProductName"></label>
+							<div class="col-md-9">
+
+								<input asp-for="ProductName" class="form-control input-lg" placeholder="Product Name" required maxlength="100" />
+							</div>
+							
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="UnitPrice"></label>
+							<div class="col-md-9">
+
+								<input asp-for="UnitPrice" class="form-control input-lg" placeholder="UnitPrice" required maxlength="100" />
+							</div>
+						
+						</div>
+
+
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" >Category</label>
+							<div class="col-md-9">
+								@Html.DropDownList("CategoryID", (IEnumerable<SelectListItem>?)ViewData["categoryList"], "Select,", new { @class = "form-control input-lg" })
+								
+							</div>
+							
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label">Supplier</label>
+							<div class="col-md-9">
+								@Html.DropDownList("SupplierID", (IEnumerable<SelectListItem>?)ViewData["supplierList"], "Select,", new { @class = "form-control input-lg" })
+
+							</div>
+							</div>
+							<div class="form-group">
+
+								<label class="col-md-3 control-label" asp-for="Stock"></label>
+								<div class="col-md-9">
+
+									<input asp-for="Stock" class="form-control input-lg" placeholder="Stock" required maxlength="100" />
+								</div>
+								
+							</div>
+							<div class="form-group">
+
+								<label class="col-md-3 control-label" asp-for="Discount"></label>
+								<div class="col-md-9">
+
+									<input asp-for="Discount" class="form-control input-lg" placeholder="Discount" required maxlength="100" />
+								</div>
+
+							</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label">Status</label>
+							<div class="col-md-9">
+								@Html.DropDownList("StatusID", (IEnumerable<SelectListItem>?)ViewData["statusList"], "Select,", new { @class = "form-control input-lg" })
+
+							</div>
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="KeyWords"></label>
+							<div class="col-md-9">
+
+								<input asp-for="KeyWords" class="form-control input-lg" placeholder="KeyWords" required maxlength="100" />
+							</div>
+
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="Kdv"></label>
+							<div class="col-md-9">
+
+								<input asp-for="Kdv" class="form-control input-lg" placeholder="Kdv" required maxlength="100" />
+							</div>
+
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="Related"></label>
+							<div class="col-md-9">
+
+								<input asp-for="Related" class="form-control input-lg" placeholder="Related" required maxlength="100" />
+							</div>
+
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="Notes"></label>
+							<div class="col-md-9">
+
+								<input asp-for="Notes" class="form-control input-lg" placeholder="Notes" required maxlength="100" />
+							</div>
+
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="PhotoPath"></label>
+							<div class="col-md-9">
+
+								<input type="file" asp-for="PhotoPath" class="form-control input-lg" />
+							</div>
+							
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="IsActive"></label>
+							<div class="col-md-9">
+								<input asp-for="IsActive" class="form-control input-lg" />
+							</div>
+							<input type="hidden" asp-for="ProductID" />
+						</div>
+					</div>
+
+					<input type="hidden" asp-for="ProductID" />
+
+					<div class="form-actions right">
+						<a asp-action="ProductIndex" class="btn btn-primary">Product LIST></a>
+						<input type="submit" value="SAVE" class="btn btn-success" />
+
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+

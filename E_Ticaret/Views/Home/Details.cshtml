@@ -1,0 +1,487 @@
+﻿@model MainPageModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+    decimal fiyat;
+
+}
+
+<!-- breadcrumb area start  -->
+<div id="sp-breadcrumb-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12" id="sp-breadcrumb">
+                <div class="sp-column ">
+                    <div class="sp-module ">
+                        <div class="sp-module-content">
+                            <ul class="breadcrumb">
+                                <li><i class="fa fa-home"></i></li>
+                                <li class="active">Destop &amp; Laptop</li>
+                                <li class="active">Et Ultrices Posuere</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area End  -->
+<!-- Single product area start  -->
+<div class="shop-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="shop-by">
+                    <h3>Shop By</h3>
+                </div>
+                <div class="all-shop-cat">
+                    <form action="single-product.html#">
+                        <div class="single-shop-cat">
+                            <h3>Categories </h3>
+                            <ul>
+                                <li><a href="single-product.html#"> Clear</a></li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Baby</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Camera &amp; Camcorder</a>
+                                    <span>(10)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"></div>
+                                    <a href="single-product.html#">@Model.CategoryName</a>
+                                    <span>(40)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Fashion &amp; Accessories</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Furniture</a>
+                                    <span>(9)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Health &amp; Beauty</a>
+                                    <span>(12)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Houseware</a>
+                                    <span>(11)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Baby</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Mobile &amp; tablet</a>
+                                    <span>(16)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Watches &amp; Glasses</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Health &amp; Beauty</a>
+                                    <span>(12)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Houseware</a>
+                                    <span>(11)</span>
+                                </li>
+                            </ul>
+                            <h3 class="manufacturers">Manufacturers</h3>
+                            <ul>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Apple</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Canon</a>
+                                    <span>(10)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Nokia</a>
+                                    <span>(40)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="single-product.html#">Samsung</a>
+                                    <span>(19)</span>
+                                </li>
+                            </ul>
+                            <h3 class="manufacturers">Price</h3>
+                            <div class="price_filter">
+                                <div id="slider-range"></div>
+                                <div class="price_slider_amount">
+                                    <p><input type="text" id="amount" name="price" placeholder="Add Your Price" /></p>
+                                    <input type="submit" value="Filter" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="add-r-sidebar">
+                        <p class="banner-block"><a href="single-product.html#"><img alt="" src="~/img/all-adds/3.jpg"></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                <div class="back-to-category">
+                    Listed in Category:
+                    <a title="@Model.CategoryName" class="product-details" href="/Home/CategoryPage/@Model.ProductDetails.CategoryID">@Model.CategoryName</a>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5 col-lg-5">
+                        <div class="product-view">
+                            <div class="full-product-img">
+                                <div class="tab-content">
+                                    <div id="home" class="tab-pane fade in active">
+                                        <img class="zoom_01" src='~/img/single-products/1.jpg' data-zoom-image="~/img/single-products/1.jpg" alt="" />
+                                    </div>
+
+                                    <div id="menu1" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/resimler/@Model.ProductDetails.PhotoPath" alt="" />
+                                    </div>
+                                    <div id="menu2" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/resimler/@Model.ProductDetails.PhotoPath" alt="" />
+                                    </div>
+                                    <div id="menu3" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/resimler/@Model.ProductDetails.PhotoPath" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-products">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="single-product.html#home">
+                                            <img src="~/img/single-products/small/1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="single-product.html#menu1">
+                                            <img src="~/img/single-products/small/2.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="single-product.html#menu2">
+                                            <img src="~/img/single-products/small/3.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="single-product.html#menu3">
+                                            <img src="~/img/single-products/small/4.jpg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-7">
+                        <div class="single-product-info sp-info-area">
+                            <div class="product-name"><h1>@Model.ProductDetails.ProductName</h1></div>
+                            <div class="product-rating">
+                                <div title="Rating: 3/5" class="ratingbox">
+                                    <div class="stars-orange" style="width:45px"></div>
+                                </div>
+                                <span class="amount"> 1 Review(s) </span>
+                                <p class="in-stock">
+                                    Availability:<span>@Model.ProductDetails.Stock</span>
+                                </p>
+                            </div>
+                            <div class="all-prices">
+                                <span class="sp-price price-lessprice">@Model.ProductDetails.UnitPrice TL</span>
+                                <span class="sp-price main-price">
+                                    @{
+                                        fiyat = Model.ProductDetails.UnitPrice * Model.ProductDetails.Discount/100;
+                                        fiyat = Model.ProductDetails.UnitPrice - fiyat;
+                                    }
+                                    @fiyat TL
+                                </span>
+                                <p class="sku">Sku: <span class="color">F10</span></p>
+                            </div>
+                            <div class="singl-share">
+                                <a href="single-product.html#"><img src="~/img/single-share.png" alt=""></a>
+                            </div>
+                            <div class="product-short-description">
+                                @Model.ProductDetails.Notes
+                            </div>
+                            <div class="single-icons">
+                                <ul>
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Add Favorite" class="black-tooltip" href="single-product.html#"><i class="fa fa-heart"></i> </a></li>
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Add to compare" class="black-tooltip" href="single-product.html#"><i class="fa fa-refresh"></i></a></li>
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Print" class="black-tooltip" href="single-product.html#"><i class="fa fa-print"></i></a></li>
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Email" class="black-tooltip" href="single-product.html#"><i class="fa fa-envelope-o"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="s-product-fields">
+                                <div class="s-product-fields-l">
+                                    <span><strong>color</strong></span>
+                                    <div class="select-wrapper">
+                                        <select class="select-nksearch">
+                                            <option selected="selected">Blue No additional charge</option>
+                                            <option>Yellow +$1.56</option>
+                                            <option>Red +$3.50</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="s-product-fields-l s-product-fields-r">
+                                    <span><strong>size</strong></span>
+                                    <div class="select-wrapper">
+                                        <select class="select-nksearch">
+                                            <option selected="selected">M No additional charge</option>
+                                            <option>L +$12.42</option>
+                                            <option>XL +$14.35</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-quantity">
+                                <div class="numbers-row">
+                                    <input type="text" value="2" name="#">
+                                </div>
+                                <div class="s-poraduct-botton">
+                                    <input type="submit" value="Add to Cart">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="reviews-areas">
+                            <div class="reviw-title">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="single-product.html#description">Full Description</a></li>
+                                    <li><a data-toggle="tab" href="single-product.html#review">Add Your Review</a></li>
+                                    <li><a data-toggle="tab" href="single-product.html#infomation">Product Infomation</a></li>
+                                </ul>
+                            </div>
+                            <div class="revew-content-area">
+                                <div class="tab-content">
+                                    <div id="description" class="tab-pane fade in active">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                        <p>Ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi.</p>
+                                        <p>Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin rhoncus, ultricies posuere erat. Duis convallis, arcu nec aliquam consequat, purus felis vehicula felis, a dapibus enim lorem nec augue. Nunc facilisis sagittis ullamcorper.</p>
+                                        <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis.</p>
+                                    </div>
+                                    <div id="review" class="tab-pane fade">
+                                        <div class="customer-reviews">
+                                            <h3 class="title-list-reviews">Reviews</h3>
+                                            <div class="list-reviews">
+                                                <div class="review-item normal">
+                                                    <b class="author">Trung Jayce</b>
+                                                    <span class="vote">
+                                                        <span style="display:inline-block;width:70px;" class="vmicon ratingbox" title="Rating: 4/5">
+                                                            <span style="width:56px" class="stars-orange"></span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="date">Wednesday, 15 July 2015</span>
+                                                    <p class="info">Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="infomation" class="tab-pane fade">
+                                        <div class="product-infomation">
+                                            <ul class="list-info">
+                                                <li><strong>Weight</strong> 10.00 KG</li>
+                                                <li><strong>Length</strong> 10.00 M</li>
+                                                <li><strong>Width</strong> 5.00</li>
+                                                <li><strong>Height</strong> 5.00</li>
+                                                <li><strong>Packaging</strong> 5.00 KG</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rp-area">
+                            <div class="all-p-title">
+                                <h3>Related Products</h3>
+                            </div>
+                            <div class="singl-shop ">
+                                <div class="row">
+                                    @foreach (var item in Model.RelatedProducts)
+                                    {
+                                        <!-- SP-SINGLE Product -->
+                                        <div class="col-sm-6 col-md-3 col-lg-3">
+                                            <div class="sp-single">
+                                                <div class="sp-img-area">
+                                                    <img alt="" src="~/resimler/@item.PhotoPath" class="first-img" style="height:150px">
+                                                    <img alt="" src="~/resimler/@item.PhotoPath" class="hover-img">
+                                                    <div class="quick-view-detail">
+                                                        <a href="single-product.html#">View Detail</a>
+                                                    </div>
+                                                    <div class="sp-label-pro sp-label-pro-hot">Hot!</div>
+                                                </div>
+                                                <div class="sp-info-area">
+                                                    <h2 class="product-name"><a href="/Home/Details/@item.ProductID" title="Dolor Dignissim Semper">@item.ProductName </a></h2>
+                                                    <div class="product-rating">
+                                                        <div title=" Rating: 3/5" class="ratingbox">
+                                                            <div class="stars-orange" style="width:50px"></div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="all-prices">
+                                                        <span class="sp-price main-price">@item.UnitPrice</span>
+                                                    </p>
+                                                    <div class="sp-button">
+                                                        <div class="s-button">
+                                                            <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                        </div>
+                                                        <div class="s-button">
+                                                            <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add favorite"> <i class="fa fa-heart-o"></i> </a>
+                                                        </div>
+                                                        <div class="s-button last-b ">
+                                                            <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- SP-SINGLE Product -->
+                                    }
+                                  
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="~/img/all-sp/new-p/24.jpg" class="first-img">
+                                                <img alt="" src="~/img/all-sp/new-p/25.jpg" class="hover-img">
+                                                <div class="quick-view-detail">
+                                                    <a href="single-product.html#">View Detail</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-new">New!</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h2 class="product-name"><a href="single-product.html#" title="Dolor Dignissim Semper">Dignissim Dolor </a></h2>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">$189.00</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add favorite"> <i class="fa fa-heart-o"></i> </a>
+                                                    </div>
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- SP-SINGLE Product -->
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="~/img/all-sp/new-p/18.jpg" class="first-img">
+                                                <img alt="" src="~/img/all-sp/new-p/12.jpg" class="hover-img">
+                                                <div class="quick-view-detail">
+                                                    <a href="single-product.html#">View Detail</a>
+                                                </div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h2 class="product-name"><a href="single-product.html#" title="Dolor Dignissim Semper">Dignissim Dolor </a></h2>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:70px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">$189.00</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add favorite"> <i class="fa fa-heart-o"></i> </a>
+                                                    </div>
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- SP-SINGLE Product -->
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="~/img/all-sp/new-p/16.jpg" class="first-img">
+                                                <img alt="" src="~/img/all-sp/new-p/22.jpg" class="hover-img">
+                                                <div class="quick-view-detail">
+                                                    <a href="single-product.html#">View Detail</a>
+                                                </div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h2 class="product-name"><a href="single-product.html#" title="Dolor Dignissim Semper"> </a></h2>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:30px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">$189.00</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="add favorite"> <i class="fa fa-heart-o"></i> </a>
+                                                    </div>
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="" data-placement="top" data-toggle="tooltip" href="single-product.html#" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Single product area End  -->
+<!-- footer bannar area Start  -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="new-bottom-area helth-bottom">
+                <!-- bannar-1 -->
+                <div class="banner-home-inner">
+                    <a href="single-product.html#">
+                        <img src="~/img/all-bannars/2.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer bannar area end  -->

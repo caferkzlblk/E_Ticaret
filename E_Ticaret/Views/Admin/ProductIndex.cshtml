@@ -1,0 +1,191 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ProductIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+	ETicaretContext context = new();
+}
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-12">
+		<p>
+			<a asp-action="ProductCreate" asp-controller="Admin" class="btn btn-success ">New Product</a>
+		</p>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div class="portlet box red">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-cogs"></i>PRODUCT LIST
+				</div>
+				<div class="tools">
+					<a href="javascript:;" class="collapse">
+					</a>
+					<a href="#portlet-config" data-toggle="modal" class="config">
+					</a>
+					<a href="javascript:;" class="reload">
+					</a>
+					<a href="javascript:;" class="remove">
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div class="table-scrollable">
+					<table class="table table-hover">
+						<thead>
+							<tr style="background-color:gray;color:white">
+								<th>
+									@Html.DisplayNameFor(model => model.ProductID)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.ProductName)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.UnitPrice)
+
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.CategoryID)
+
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.SupplierID)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Stock)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Discount)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.StatusID)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.AddDate)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.KeyWords)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Kdv)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Related)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.Notes)
+								</th>
+								<th>
+									@Html.DisplayNameFor(model => model.IsActive)
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(model => item.ProductID)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.ProductName)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.UnitPrice)
+									</td>
+									<td>
+										@{
+											string? CategoryName = context.Categories.FirstOrDefault(c => c.CategoryID == item.CategoryID)?.CategoryName;
+											@CategoryName
+										}
+									</td>
+									<td>
+										@{
+											string? Supplier = context.Suppliers.FirstOrDefault(s => s.SupplierID == item.SupplierID)?.BrandName;
+											@Supplier
+										}
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.Stock)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.Discount)
+									</td>
+
+
+									<td>
+										@{
+											string? StatusName = context.Statuses.FirstOrDefault(st => st.StatusID == item.StatusID)?.StatusName;
+											@StatusName
+										}
+									</td>
+
+
+									<td>
+										@Html.DisplayFor(model => item.AddDate)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.KeyWords)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.Kdv)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.Related)
+									</td>
+									<td>
+										@Html.DisplayFor(model => item.Notes)
+									</td>
+									
+									
+									
+									@if (item.IsActive)
+									{
+										<td>
+											<label style="background-color:green; color:white">ACTIVE</label>
+										</td>
+
+									}
+									else
+									{
+										<td>
+											<label style="background-color:orangered; color:white">NOT ACTIVE</label>
+										</td>
+									}
+
+
+									<td>
+										<a asp-action="ProductEdit" asp-route-id="@item.ProductID" class="btn btn-primary">EDIT</a>
+
+									</td>
+									<td>
+										<a asp-action="ProductDetails" asp-route-id="@item.ProductID" class="btn btn-info">DETAILS</a>
+
+									</td>
+									<td>
+										<a asp-action="ProductDelete" asp-route-id="@item.ProductID" class="btn btn-danger">DELETE</a>
+
+									</td>
+								</tr>
+
+
+							}
+							
+
+						</tbody>
+
+
+
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+

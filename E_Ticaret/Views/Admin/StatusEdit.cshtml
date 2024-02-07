@@ -1,0 +1,71 @@
+﻿@model Status
+@{
+    ViewData["Title"] = "StatusEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+
+		<div class="portlet box purple ">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-gift"></i> Status Update Form
+				</div>
+				<div class="tools">
+					<a href="" class="collapse">
+					</a>
+					<a href="#portlet-config" data-toggle="modal" class="config">
+					</a>
+					<a href="" class="reload">
+					</a>
+					<a href="" class="remove">
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<form class="form-horizontal" role="form" action="/Admin/StatusEdit" method="post">
+
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-body">
+
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="StatusName"></label>
+							<div class="col-md-9">
+
+								<input asp-for="StatusName" class="form-control input-lg" placeholder="Status Name" required maxlength="100" />
+							</div>
+							<span asp-validation-for="StatusName" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+
+						
+							<span asp-validation-for="StatusName" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+
+							<label class="col-md-3 control-label" asp-for="IsActive"></label>
+							<div class="col-md-9">
+								<input asp-for="IsActive" class="form-control input-lg" />
+							</div>
+							<input type="hidden" asp-for="StatusID" />
+						</div>
+					</div>
+
+					<input type="hidden" asp-for="StatusID" />
+
+					<div class="form-actions right">
+						<a asp-action="SupplierIndex" class="btn btn-primary">STATUS LIST></a>
+						<input type="submit" value="SAVE" class="btn btn-success" />
+
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+

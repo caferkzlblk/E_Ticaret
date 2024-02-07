@@ -1,0 +1,291 @@
+﻿@model IEnumerable<Category>
+@inject IHttpContextAccessor Accessor
+
+<!--Menus Default Components-->
+<!-- start preloader -->
+<div id="loader-wrapper">
+    <div class="logo"></div>
+    <div id="loader">
+    </div>
+</div>
+<!-- end preloader -->
+<!-- header area start -->
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+
+
+            <a href="/Home/Index"><img src="~/img/logo.png" alt="logo" width="200" height="200" /> </a>
+            
+         
+                <div class="top-nav-area">
+                <ul class="d-flex align-items-center justify-content-end">
+                        <li>
+                            <a href="/Home/NewProducts">
+                                <i class="fa fa-filter"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        NEW PRODUCTS
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/Home/SpecialProducts">
+                                <i class="fa fa-tag"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        SPECIAL PRODUCTS
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/Home/DiscountProducts">
+                                <i class="fa fa-level-down"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        DISCOUNTED PRODUCTS
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/HighlightedProducts">
+                                <i class="fa fa-heart"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                    HIGHLIGHTED PRODUCTS  
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="/Home/TopSellerProducts">
+                                <i class="fa fa-arrow-up"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        TOP SELLER PRODUCTS
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/MyOrders">
+                                <i class="fa fa-gift"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        MY ORDERS
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/Cart">
+                                <div class="cart_area">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            Cart
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+</div>
+<!-- main menu area start  -->
+<div class="main-menu-area ">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-sm-8 col-md-3 col-lg-3">
+
+                @{
+                    var username = Accessor.HttpContext.Session.GetString("Email");
+                }
+                <span style="color:white;">@username</span>
+
+                <div class="menu-cat-area">
+                    <h3 class="nk-module-title"><span>Category</span></h3>
+                    <div class="nk-all-items" style="display:none;">
+                        <div class="sp-module-content">
+                            <!-- treeview -->
+                            <div class="vina-treeview-virtuemart" id="vina-treeview-virtuemart93">
+                                <ul class="level0 treeview">
+                                    @foreach (var item in Model.Where(c => c.ParentID == 0))
+                                    {
+                                        <li>
+                                            <a title="@item.CategoryName" href="/Home/CategoryPage/@item.CategoryID" class="">
+                                                <span class=@item.CategoryName>@item.CategoryName</span>
+                                            </a>
+                                            @foreach (var subitem in Model)
+                                            {
+                                                if (item.CategoryID == subitem.ParentID)
+                                                {
+                                                     <ul class="sub-menu treeview" style="display:none;">
+                                                     <li class="expandable">
+                                                            <a title="Fashion" href="/Home/CategoryPage/@subitem.CategoryID" class="">
+                                                                <span class=@subitem.CategoryName>@subitem.CategoryName</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                }
+                                            }
+                                        </li>
+                                    }
+                                    
+                                 
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-10 col-lg-10" style="margin-left:300px">
+                <nav>
+                    <ul>
+                        <li class="active">
+                            <a href="Home/Index">Home Page</a>
+                            <div class="sp-dropdown-inner">
+
+                        </li>
+
+                        @if (username == null)
+                        {
+                            <li><a href="/Home/Login">Login</a></li>
+
+                        }
+                        else
+                        {
+                            <li><a href="/Home/Logout">Log Out</a></li>
+
+                        }
+                        <li><a href="/Home/Register">Register</a></li>
+                        <li><a href="/Home/AboutUs">About Us</a></li>
+                        <li><a href="/Home/CotactUs">Contact Us</a></li>
+                        <li><a href="/Home/DetailedSearch">Detailed Search</a></li>
+                      
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main menu area end  -->
+<!-- mobile-menu-area start -->
+<div class="mobile-menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mobile-menu">
+                    <nav id="dropdown">
+                        <ul>
+                            <li>
+                                <a href="index.html">Home2</a>
+                                <ul>
+                                    <li><a href="index.html">Home 1</a></li>
+                                    <li><a href="index-2.html">Home 2</a></li>
+                                    <li><a href="index-3.html">Home 3</a></li>
+                                    <li><a href="index-4.html">Home 4</a></li>
+                                    <li><a href="index-5.html">Home 5</a></li>
+                                    <li><a href="index-6.html">Home 6</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li>
+                                <a href="index.html#">Pages</a>
+                                <ul>
+                                    <li><a href="blog-post.html">blog post page</a></li>
+                                    <li><a href="cart.html">cart page</a></li>
+                                    <li><a href="checkout.html">checkout page</a></li>
+                                    <li><a href="login.html">login page</a></li>
+                                    <li><a href="shop.html">shop page</a></li>
+                                    <li><a href="single-product.html">single product page</a></li>
+                                    <li><a href="wishlist.html">wishlist</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- mobile-menu-area end -->
+<!-- search area start  -->
+<div class="nk-search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="nk-search">
+                    <div class="search_input">
+
+                        <input type="text" lang="tr" id="search" name="search" placeholder="Search Product, Category and Brand" style="width:800px;" />
+                        <br />
+                        <div id="dv" style="width:800px;height:auto; margin-top:23px; border-style:solid; background-color:white;border-color:#ff6a00ff; position:absolute; z-index:10000;">
+
+                          <ul id="sul"></ul>   
+
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main menu area end  -->
+
+
+    <script>
+        //arama alanı
+        $('#search').keyup(function () {
+            var id = $("#search").val();
+
+            if (id != "" && $("#search").val().length > 1) {
+                $.ajax({
+                    url: '/Home/gettingProducts/' + id,
+                    type: 'POST',
+                    ContentType:'application.json;charset=UTF-8',
+                    success: function (result) {
+                        $("#sul").remove();
+                        $("#dv").append("<ul id='sul'>")
+                        $("#sul").append(result)
+                        $("#dv").append("</ul>")
+
+                    }
+                })
+            }
+            else {
+                $("#sul").remove();
+
+            }
+
+
+        })
+
+
+
+
+    </script>
